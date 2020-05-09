@@ -18,6 +18,7 @@ class MatchesViewController: UIViewController, MatchesDisplayProtocol {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var menuBarButton: UIButton!
     
     //MARK: Declaration
     var interactor: MatchesInteractorProtocol?
@@ -54,6 +55,13 @@ class MatchesViewController: UIViewController, MatchesDisplayProtocol {
         interactor?.getMatches()
         self.title = "Matches Details"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        if revealViewController() != nil {
+                        revealViewController()?.rightViewRevealWidth = 100
+        
+            menuBarButton.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+    
+        }
     }
     
     func displayMatchDetails(viewModel: MatchesDetails.Fetch.ViewModel) {
