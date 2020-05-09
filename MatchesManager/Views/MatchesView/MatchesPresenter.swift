@@ -19,7 +19,7 @@ class MatchesPresenter: MatchesPresenterProtocol {
         var displayMatchDetails: [MatchesDetails.Fetch.ViewModel.DisplayMatchDetail] = []
         
         for venue in response.venues {
-            let data = MatchesDetails.Fetch.ViewModel.DisplayMatchDetail(id: venue.id, name: venue.name, phone: venue.contact.phone ?? "Not Available")
+            let data = MatchesDetails.Fetch.ViewModel.DisplayMatchDetail(id: venue.id, name: venue.name, phone: venue.contact.phone ?? "Not Available", isStarred: false)
             displayMatchDetails.append(data)
         }
         

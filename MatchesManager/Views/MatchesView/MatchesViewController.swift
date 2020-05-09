@@ -17,6 +17,7 @@ class MatchesViewController: UIViewController, MatchesDisplayProtocol {
     //MARK: IBOutlets
     
     
+    @IBOutlet weak var tableView: UITableView!
     
     //MARK: Declaration
     var interactor: MatchesInteractorProtocol?
@@ -51,11 +52,39 @@ class MatchesViewController: UIViewController, MatchesDisplayProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor?.getMatches()
-        // Do any additional setup after loading the view.
+        self.title = "Matches Details"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func displayMatchDetails(viewModel: MatchesDetails.Fetch.ViewModel) {
         debugPrint(viewModel.displayedDetails)
         displayMatchDetails = viewModel.displayedDetails
+        tableView.reloadData()
+    }
+    
+}
+
+extension MatchesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        displayMatchDetails.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let matchdetail = displayMatchDetails[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "matchcell", for: indexPath) as! MatchDetailTableViewCell
+        //To DO: Move into Method
+        cell.nameLabel.text = matchdetail.name
+        cell.starButton.tag = indexPath.row
+        cell.starButton.isSelected = matchdetail.isStarred
+        cell.cellDelegate = self
+        return cell
     }
 }
+
+extension MatchesViewController: MatchDetailTableViewCellDelegate {
+    func didPressButton(_ tag: Int ) {
+        let detail = displayMatchDetails[tag]
+        detail.isStarred = !detail.isStarred
+    }
+}
+

@@ -32,6 +32,7 @@
 		22B6262A24668DCC00C0D07C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6262924668DCC00C0D07C /* BaseService.swift */; };
 		22B6262C24668E9300C0D07C /* BaseWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6262B24668E9300C0D07C /* BaseWorker.swift */; };
 		22B6262E2466917400C0D07C /* MatchesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6262D2466917400C0D07C /* MatchesModel.swift */; };
+		22B626302466A07100C0D07C /* MatchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6262F2466A07100C0D07C /* MatchDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		22B6262924668DCC00C0D07C /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		22B6262B24668E9300C0D07C /* BaseWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWorker.swift; sourceTree = "<group>"; };
 		22B6262D2466917400C0D07C /* MatchesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesModel.swift; sourceTree = "<group>"; };
+		22B6262F2466A07100C0D07C /* MatchDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				2217EF9A246689E70065E17F /* MatchesPresenter.swift */,
 				2217EF9C246689F40065E17F /* MatchesRouter.swift */,
 				22B6262D2466917400C0D07C /* MatchesModel.swift */,
+				22B6262F2466A07100C0D07C /* MatchDetailTableViewCell.swift */,
 			);
 			path = MatchesView;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				2217EF91246688DC0065E17F /* MatchesAPIRouter.swift in Sources */,
 				22B6262E2466917400C0D07C /* MatchesModel.swift in Sources */,
 				22B6262A24668DCC00C0D07C /* BaseService.swift in Sources */,
+				22B626302466A07100C0D07C /* MatchDetailTableViewCell.swift in Sources */,
 				2217EF99246689D90065E17F /* MatchesViewController.swift in Sources */,
 				2217EF5D2466855E0065E17F /* SceneDelegate.swift in Sources */,
 				2217EF8F246688700065E17F /* JsonHelper.swift in Sources */,

@@ -13,9 +13,14 @@ class MatchesWorker: BaseWorker {
     func getMatches(request: MatchRequest, completion: @escaping MatchesDataHandler) {
         dataStore.matchesService.getMatches(request: request) { (response, error) in
             if let matches = response {
-                completion(matches.response.venues)
+                DispatchQueue.main.async {
+                    completion(matches.response.venues)
+                }
+                
             } else {
-                completion([])
+                DispatchQueue.main.async {
+                    completion([])
+                }
             }
         }
     }
