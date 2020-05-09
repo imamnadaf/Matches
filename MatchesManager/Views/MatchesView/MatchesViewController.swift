@@ -63,10 +63,8 @@ class MatchesViewController: UIViewController, MatchesDisplayProtocol {
     
     private func loadData() {
         if shouldShowSavedMatches {
-            self.title = "Saved Matches Details"
             interactor?.getSavedMatches()
         } else {
-            self.title = "Matches Details"
             interactor?.getMatches()
         }
     }
