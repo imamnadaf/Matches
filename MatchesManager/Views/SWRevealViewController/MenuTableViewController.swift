@@ -19,10 +19,14 @@ class MenuTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigation = segue.destination as! UINavigationController
+        let controller = navigation.viewControllers.first as! MatchesViewController
         if segue.identifier == "showall" {
             debugPrint("Show all")
-        } else {
+            controller.shouldShowSavedMatches = false
             
+        } else {
+            controller.shouldShowSavedMatches = true
         }
     }
 

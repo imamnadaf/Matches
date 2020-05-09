@@ -35,6 +35,8 @@
 		22B626302466A07100C0D07C /* MatchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6262F2466A07100C0D07C /* MatchDetailTableViewCell.swift */; };
 		22B626352466A99000C0D07C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B626342466A99000C0D07C /* SWRevealViewController.m */; };
 		22B626372466AAE000C0D07C /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B626362466AAE000C0D07C /* MenuTableViewController.swift */; };
+		22B6263A2466B5AE00C0D07C /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B626392466B5AE00C0D07C /* DBHelper.swift */; };
+		22B6263C2466B6DC00C0D07C /* SavedMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6263B2466B6DC00C0D07C /* SavedMatch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		22B626332466A99000C0D07C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		22B626342466A99000C0D07C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		22B626362466AAE000C0D07C /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		22B626392466B5AE00C0D07C /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		22B6263B2466B6DC00C0D07C /* SavedMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMatch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 			children = (
 				2217EF84246686F00065E17F /* Matches.swift */,
 				2217EF9E24668B500065E17F /* MatchRequest.swift */,
+				22B6263B2466B6DC00C0D07C /* SavedMatch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 		2217EF7D246685D60065E17F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				22B626382466B59900C0D07C /* DatabaseHelper */,
 				2217EF832466863E0065E17F /* API */,
 				2217EF812466861E0065E17F /* Providers */,
 				2217EF82246686250065E17F /* Routers */,
@@ -268,6 +274,14 @@
 				22B626362466AAE000C0D07C /* MenuTableViewController.swift */,
 			);
 			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		22B626382466B59900C0D07C /* DatabaseHelper */ = {
+			isa = PBXGroup;
+			children = (
+				22B626392466B5AE00C0D07C /* DBHelper.swift */,
+			);
+			path = DatabaseHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,11 +403,13 @@
 				2217EF8F246688700065E17F /* JsonHelper.swift in Sources */,
 				2217EF97246689B70065E17F /* MatchesInteractor.swift in Sources */,
 				2217EF9F24668B500065E17F /* MatchRequest.swift in Sources */,
+				22B6263A2466B5AE00C0D07C /* DBHelper.swift in Sources */,
 				2217EF89246687E60065E17F /* Constants.swift in Sources */,
 				2217EFA324668BC70065E17F /* DataProvider.swift in Sources */,
 				2217EFA124668BAA0065E17F /* MatchesWorker.swift in Sources */,
 				22B626372466AAE000C0D07C /* MenuTableViewController.swift in Sources */,
 				2217EFA524668C1F0065E17F /* MatchesService.swift in Sources */,
+				22B6263C2466B6DC00C0D07C /* SavedMatch.swift in Sources */,
 				2217EF9D246689F40065E17F /* MatchesRouter.swift in Sources */,
 				2217EF8C246688420065E17F /* Extensions.swift in Sources */,
 			);

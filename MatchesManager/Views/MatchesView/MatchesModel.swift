@@ -20,13 +20,10 @@ enum MatchesDetails {
             class DisplayMatchDetail {
                 let id: String
                 let name: String
-                let phone: String
                 var isStarred: Bool
-                init(id: String, name: String, phone: String, isStarred: Bool) {
+                init(id: String, name: String, isStarred: Bool) {
                     self.id = id
                     self.name = name
-                    self.phone = phone
-                    
                     self.isStarred = isStarred
                 }
             }

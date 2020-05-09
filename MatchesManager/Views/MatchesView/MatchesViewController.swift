@@ -10,6 +10,7 @@ import UIKit
 
 protocol MatchesDisplayProtocol {
     func displayMatchDetails(viewModel: MatchesDetails.Fetch.ViewModel)
+    func displaySavedMatches(viewModel: MatchesDetails.Fetch.ViewModel)
 }
 
 class MatchesViewController: UIViewController, MatchesDisplayProtocol {
@@ -24,8 +25,11 @@ class MatchesViewController: UIViewController, MatchesDisplayProtocol {
     var interactor: MatchesInteractorProtocol?
     var router: (MatchesRoutingProtocol & MatchesDataPassing)?
     
+    var shouldShowSavedMatches: Bool = false
+    
     var displayMatchDetails: [MatchesDetails.Fetch.ViewModel.DisplayMatchDetail] = []
     
+    var savedMatchesIds: [String] = []
     //MARK: Object Lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -52,24 +56,48 @@ class MatchesViewController: UIViewController, MatchesDisplayProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.getMatches()
-        self.title = "Matches Details"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        if revealViewController() != nil {
-                        revealViewController()?.rightViewRevealWidth = 100
-        
-            menuBarButton.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        loadData()
+        configureNavigationBar()
+        addSlideMenu()
+    }
     
+    private func loadData() {
+        if shouldShowSavedMatches {
+            self.title = "Saved Matches Details"
+            interactor?.getSavedMatches()
+        } else {
+            self.title = "Matches Details"
+            interactor?.getMatches()
+        }
+    }
+    
+    private func configureNavigationBar() {
+        if shouldShowSavedMatches {
+            self.title = "Saved Matches Details"
+        } else {
+            self.title = "Matches Details"
+        }
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func addSlideMenu() {
+        if revealViewController() != nil {
+            revealViewController()?.rightViewRevealWidth = 100
+            
+            menuBarButton.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+            
         }
     }
     
     func displayMatchDetails(viewModel: MatchesDetails.Fetch.ViewModel) {
-        debugPrint(viewModel.displayedDetails)
         displayMatchDetails = viewModel.displayedDetails
         tableView.reloadData()
     }
     
+    func displaySavedMatches(viewModel: MatchesDetails.Fetch.ViewModel) {
+        displayMatchDetails = viewModel.displayedDetails
+        tableView.reloadData()
+    }
 }
 
 extension MatchesViewController: UITableViewDataSource {
@@ -92,7 +120,17 @@ extension MatchesViewController: UITableViewDataSource {
 extension MatchesViewController: MatchDetailTableViewCellDelegate {
     func didPressButton(_ tag: Int ) {
         let detail = displayMatchDetails[tag]
-        detail.isStarred = !detail.isStarred
+        if !detail.isStarred {
+            interactor?.insert(id: detail.id, name: detail.name)
+            detail.isStarred = true
+        } else {
+            detail.isStarred = false
+            interactor?.delete(id: detail.id)
+            if shouldShowSavedMatches {
+                displayMatchDetails.remove(at: tag)
+                tableView.deleteRows(at: [IndexPath(row: tag, section: 0)], with: .automatic)
+            }
+        }
     }
 }
 
